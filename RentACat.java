@@ -232,7 +232,8 @@ public class RentACat {
 				validCat = true;
 			    }
 			} catch (Exception nfex) {
-			    System.err.println("Invalid cat ID.");
+				System.err.println("Invalid cat ID.");
+				sc.next();
 			}
 		    }
 
