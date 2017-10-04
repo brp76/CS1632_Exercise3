@@ -61,13 +61,15 @@ public class RentACat {
      */
     
     public String listCats(ArrayList<Cat> catList) {
-    String returnList = "";
+    String s = "";
 	for (Cat c : catList) {
+		// Only print cat if it is not rented
 		if (!c.getRented()) {
-			returnList += c.toString() + "\n";
+			s += c.toString() + "\n";
 		}
 	}
-	return returnList;
+	// Remove last extra new line character
+	return s.substring(0, s.length() - 1);
     }
 
     /**
