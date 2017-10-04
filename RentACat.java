@@ -61,8 +61,13 @@ public class RentACat {
      */
     
     public String listCats(ArrayList<Cat> catList) {
-	// TODO
-	return "WRITE CODE FOR THIS";
+    String returnList = "";
+	for (Cat c : catList) {
+		if (!c.getRented()) {
+			returnList += c.toString() + "\n";
+		}
+	}
+	return returnList;
     }
 
     /**
@@ -76,8 +81,18 @@ public class RentACat {
      */
     
     public boolean catExists(int id, ArrayList<Cat> catList) {
-	// TODO
-	return false;
+    // null / zero-element check
+	if (catList == null || catList.size() == 0) {
+	    return false;
+	}
+	Cat c = getCat(id, catList);
+	if (c == null) {
+	    // No cat of this ID exists
+	    return false;
+	}
+
+	// If cat exists, return true
+	return true;
     }
 
     /**
