@@ -56,7 +56,7 @@ public class RentACat {
     String returnList = "";
 	for (Cat c : catList) {
 		if (!c.getRented()) {
-			returnList += current.toString + "\n";
+			returnList += c.toString() + "\n";
 		}
 	}
 	return returnList;
