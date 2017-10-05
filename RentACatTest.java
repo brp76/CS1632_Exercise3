@@ -43,13 +43,13 @@ public class RentACatTest{
     public void testListCatFull(){
     	when(testCat.getRented()).thenReturn(false);
     	when(testCat.toString()).thenReturn("CAT");
-    	renter = new RentACat();
+        renter = new RentACat();
+        testList.add(testCat);
     	String s = renter.listCats(testList);
-    	System.out.println(s);
     	assertTrue(s.length() > 0);
     }
 
-    //testing that listCats() returns null when the cat doesn't exist in the list
+    //testing that catExists() returns false when the cat doesn't exist in the list
     @Test
     public void testCatNotExist(){
         when(testCat.getId()).thenReturn(1);
