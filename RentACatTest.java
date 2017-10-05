@@ -52,6 +52,6 @@ public class RentACatTest{
         when(testCat.getId()).thenReturn(1);
         renter = new RentACat();
         testList.add(testCat);
-        assertNull(renter.catExists(0,testList));
+        assertEquals(false,renter.catExists(0,testList));
     }
 }

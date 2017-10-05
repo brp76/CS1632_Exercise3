@@ -67,7 +67,10 @@ public class RentACat {
 		}
 	}
 	// Remove last extra new line character
-	return s.substring(0, s.length() - 1);
+	if(s.length() > 0){
+		return s.substring(0, s.length() - 1);
+	}
+	return s;
     }
 
     /**
