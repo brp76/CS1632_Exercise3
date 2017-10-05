@@ -30,20 +30,23 @@ public class RentACatTest{
         assertEquals(true,renter.rentCat(testCat));
     }
 
-    // Testing that the listCats method returns a null string if all the cats are rented
+    // Testing that the listCats method returns an empty string if all the cats are rented
     @Test
     public void testListCatEmpty(){
-    	when(testCat.getRented()).thenReturn(false);
+    	when(testCat.getRented()).thenReturn(true);
     	renter = new RentACat();
-    	assertNotNull(renter.listCats(testList));
+    	assertEquals("",renter.listCats(testList));
     }
 
     // Testing that the listCats method returns a string if the cats are not rented
     @Test
     public void testListCatFull(){
-    	when(testCat.getRented()).thenReturn(true);
+    	when(testCat.getRented()).thenReturn(false);
+    	when(testCat.toString()).thenReturn("CAT");
     	renter = new RentACat();
-    	assertNull(renter.listCats(testList));
+    	String s = renter.listCats(testList);
+    	System.out.println(s);
+    	assertTrue(s.length() > 0);
     }
 
     //testing that listCats() returns null when the cat doesn't exist in the list
