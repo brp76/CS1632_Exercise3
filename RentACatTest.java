@@ -45,4 +45,13 @@ public class RentACatTest{
     	renter = new RentACat();
     	assertNull(renter.listCats(testList));
     }
+
+    //testing that listCats() returns null when the cat doesn't exist in the list
+    @Test
+    public void testCatNotExist(){
+        when(testCat.getId()).thenReturn(1);
+        renter = new RentACat();
+        testList.add(testCat);
+        assertNull(renter.catExists(0,testList));
+    }
 }
