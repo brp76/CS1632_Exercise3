@@ -12,13 +12,13 @@ public class RentACatTest{
     @Before
     public void setup(){
         testCat = mock(Cat.class);
+        renter = new RentACat();
     }
 
     //Testing that the returnCat method returns true when the cat has been rented
     @Test
     public void testReturnCat(){
         when(testCat.getRented()).thenReturn(true);
-        renter = new RentACat();
         assertEquals(true,renter.returnCat(testCat));
     }
 
@@ -26,7 +26,6 @@ public class RentACatTest{
     @Test
     public void testRentCat(){
         when(testCat.getRented()).thenReturn(false);
-        renter = new RentACat();
         assertEquals(true,renter.rentCat(testCat));
     }
 
@@ -34,7 +33,6 @@ public class RentACatTest{
     @Test
     public void testListCatEmpty(){
     	when(testCat.getRented()).thenReturn(true);
-    	renter = new RentACat();
     	assertEquals("",renter.listCats(testList));
     }
 
@@ -43,7 +41,6 @@ public class RentACatTest{
     public void testListCatFull(){
     	when(testCat.getRented()).thenReturn(false);
     	when(testCat.toString()).thenReturn("CAT");
-        renter = new RentACat();
         testList.add(testCat);
     	String s = renter.listCats(testList);
     	assertTrue(s.length() > 0);
@@ -53,8 +50,15 @@ public class RentACatTest{
     @Test
     public void testCatNotExist(){
         when(testCat.getId()).thenReturn(1);
-        renter = new RentACat();
         testList.add(testCat);
         assertEquals(false,renter.catExists(0,testList));
+    }
+
+    //testing that catExists() returns true when the cat exists in the list
+    @Test
+    public void testCatExists(){
+        when(testCat.getId()).thenReturn(1);
+        testList.add(testCat);
+        assertEquals(true, renter.catExists(1, testList));
     }
 }
