@@ -1,10 +1,12 @@
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+import java.util.ArrayList;
 import org.junit.*;
 public class RentACatTest{
     
     RentACat renter;
     Cat testCat;
+    ArrayList<Cat> testList = new ArrayList<Cat>();
     
     //initialize a mock cat object for testing
     @Before
@@ -26,5 +28,21 @@ public class RentACatTest{
         when(testCat.getRented()).thenReturn(false);
         renter = new RentACat();
         assertEquals(true,renter.rentCat(testCat));
+    }
+
+    // Testing that the listCats method returns a null string if all the cats are rented
+    @Test
+    public void testListCatEmpty(){
+    	when(testCat.getRented()).thenReturn(false);
+    	renter = new RentACat();
+    	assertNotNull(renter.listCats(testList));
+    }
+
+    // Testing that the listCats method returns a string if the cats are not rented
+    @Test
+    public void testListCatFull(){
+    	when(testCat.getRented()).thenReturn(true);
+    	renter = new RentACat();
+    	assertNull(renter.listCats(testList));
     }
 }
